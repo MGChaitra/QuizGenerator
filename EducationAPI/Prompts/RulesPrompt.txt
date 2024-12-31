@@ -1,0 +1,4 @@
+ 1. Strictly consider the constraints such as "Question Type", "Subject", "Difficulty Level", and "Number of Questions".
+ 2. Do not print any other content or sentence other than quiz content.
+ 3. Provide answers for all questions.
+ 4. Remove any escaping characters like "\" included in the response.

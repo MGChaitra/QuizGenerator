@@ -1,0 +1,45 @@
+ Your goal is to generate valid and meaningful multiple-choice questions for the particular subject and difficulty level.
+                
+                ### Examples:
+
+                1.What is the basic unit of life? 
+                a) Cell 
+                b) Atom 
+                c) Molecule 
+                d) Organ 
+                Answer: a) Cell
+		
+		2. What is the capital of France? 
+		a) Berlin
+		b) Madrid
+		c) Paris
+		d) Rome
+		Answer: c) Paris
+
+		3. Which element has the chemical symbol ‘O’? 
+		a) Gold
+		b) Oxygen
+		c) Silver
+		d) Iron
+		Answer: b) Oxygen
+
+		4. Who wrote “Romeo and Juliet”? 
+		a) Charles Dickens
+		b) William Shakespeare
+		c) Mark Twain
+		d) Jane Austen
+		Answer: b) William Shakespeare
+
+		5. What is the largest planet in our solar system? 
+		a) Earth
+		b) Mars
+		c) Jupiter
+		d) Saturn
+		Answer: c) Jupiter
+
+		6. Which process do plants use to make food? 
+		a) Respiration
+		b) Photosynthesis
+		c) Digestion
+		d) Fermentation
+		Answer: b) Photosynthesis

@@ -1,0 +1,75 @@
+﻿@page "/"
+@using EducationWebApp.Models
+@using EducationWebApp.Services
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Forms
+@using System.Text.Json;
+@using iText
+@using EducationWebApp.Contracts
+@using static ModelDLL.Enum
+@inject IJSRuntime JSRuntime
+@inject IOpenAIService OpenAIService
+@inject IGenerateQuizPDFContentService gen
+
+<h3>Quiz Generator</h3>
+<br />
+<br />
+<EditForm Model="@request" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="topic">Select Topic</label>
+        <InputSelect id="topic" class="form-control" @bind-Value="request.Subject">
+            <option value="">-- Select Topic --</option>
+            @foreach (var topic in Enum.GetValues(typeof(Topic)).Cast<Topic>())
+            {
+                <option value="@topic">@topic</option>
+            }
+        </InputSelect>
+        <ValidationMessage For="@(() => request.Subject)" />
+    </div><br />
+
+    <div class="form-group">
+        <label for="difficulty">Select Difficulty</label>
+        <InputSelect id="difficulty" class="form-control" @bind-Value="request.Difficulty">
+            <option value="">-- Select Difficulty --</option>
+            @foreach (var difficulty in Enum.GetValues(typeof(Difficulty)).Cast<Difficulty>())
+            {
+                <option value="@difficulty">@difficulty</option>
+            }
+        </InputSelect>
+        <ValidationMessage For="@(() => request.Difficulty)" />
+    </div><br />
+
+    <div class="form-group">
+        <label for="number">Number of Questions</label>
+        <InputNumber id="number" class="form-control" @bind-Value="request.Number" />
+        <span class="form-text">Tip: The Number of Questions must be between 1 and 25.</span>
+        <ValidationMessage For="@(() => request.Number)" />
+    </div>
+    <div class="d-flex flex-wrap">
+        <button type="submit" class="btn btn-primary mt-3 me-2" @onclick="() => OnGenerateMCQQuiz()">MCQ Question</button>
+        <button type="submit" class="btn btn-primary mt-3 me-2" @onclick="() => OnGenerateShortQuiz()">Short Answer Question</button>
+        <button type="submit" class="btn btn-primary mt-3" @onclick="() => OnGenerateLongQuiz()">Long Answer Question</button>
+    </div>
+</EditForm>
+@if (isLoading)
+{
+    <p>Loading quiz...</p>
+}
+@if (!string.IsNullOrEmpty(formattedQuizContent))
+{
+    <div class="quiz-content">
+        <h5>Generated Quiz On @request.Subject:</h5>
+        <pre>@formattedQuizContent</pre>
+    </div>
+}
+@if (!string.IsNullOrEmpty(formattedQuizContent))
+{
+    <div class="mt-3">
+        <button class="btn btn-success mt-3" @onclick="DownloadQuizAsPDF">Download Quiz as PDF</button>
+    </div>
+}
+
+

@@ -1,0 +1,36 @@
+ Your goal is to generate valid and meaningful short answer questions for the particular subject and difficulty level.
+                
+                ### Example:
+
+                1. What are the four states of matter? 
+                Answer: Solid, liquid, gas, and plasma
+		
+		2. What is the chemical formula for water? 
+		Answer: H₂O
+
+		3. Who is known as the “Father of Computers”? 
+		Answer: Charles Babbage
+
+		4. What is the capital city of Japan? 
+		Answer: Tokyo
+
+		5. What is the largest mammal in the world? 
+		Answer: Blue whale
+
+		6. In which year did the Titanic sink? 
+		Answer: 1912
+
+		7. What is the powerhouse of the cell? 
+		Answer: Mitochondria
+
+		8. Who painted the Mona Lisa? 
+		Answer: Leonardo da Vinci
+
+		9. What is the freezing point of water in Celsius? 
+		Answer: 0°C
+
+		10. Which planet is known as the Red Planet? 
+		Answer: Mars
+
+		11. Who wrote the play “Hamlet”? 
+		Answer: William Shakespeare
