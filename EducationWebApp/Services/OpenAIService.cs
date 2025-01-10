@@ -1,15 +1,15 @@
 ﻿using System.Net.Http.Json;
 using Microsoft.Extensions.Logging;
-using EducationWebApp.Models;
 using System.Net.Http;
 using EducationWebApp.Contracts;
+using ModelDLL.Models;
 
 
 namespace EducationWebApp.Services
 {
     // Add code summary for each methods and properties - completed
     // Add Ilogger for logging - completed
-    
+
     /// <summary>
     /// Service to interact with EducationAPI for generating quiz content.
     /// </summary>
@@ -108,12 +108,10 @@ namespace EducationWebApp.Services
         /// <param name="request">The request containing quiz parameters.</param>
         private void ValidateParameters(RequestModel request)
         {
-            if (string.IsNullOrEmpty(request.Subject))
-                throw new ArgumentException("Subject cannot be null or empty", nameof(request.Subject));
-            if (string.IsNullOrEmpty(request.Difficulty))
-                throw new ArgumentException("Difficulty cannot be null or empty", nameof(request.Difficulty));
-            if (request.Number <= 0)
-                throw new ArgumentException("Number must be greater than zero", nameof(request.Number));
+
+            if (request is null)
+                throw new ArgumentNullException(nameof(request), "Request cannot be null");
+           
         }
     }
 }

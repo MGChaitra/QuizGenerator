@@ -28,11 +28,11 @@ namespace EducationAPI.Plugins
         public async Task<string> GenerateMCQQuiz(string subject, string difficulty, int numberOfQuestions)
         {
             // Load the example and rules prompts
-            string examplePath = Path.Combine(_configuration["Prompts"], "MCQPrompt.txt");
-            string exampleDescription = await File.ReadAllTextAsync(examplePath);
+            string examplePath = Path.Combine(_configuration["Prompts"]!, "MCQPrompt.txt");
+            string exampleDescription = await File.ReadAllTextAsync(examplePath).ConfigureAwait(false);
 
-            string rulesPath = Path.Combine(_configuration["Prompts"], "RulesPrompt.txt");
-            string rulesDescription = await File.ReadAllTextAsync(rulesPath);
+            string rulesPath = Path.Combine(_configuration["Prompts"]!, "RulesPrompt.txt");
+            string rulesDescription = await File.ReadAllTextAsync(rulesPath).ConfigureAwait(false);
 
             // Construct the final prompt
             string finalPrompt = $"""
@@ -69,11 +69,11 @@ namespace EducationAPI.Plugins
         public async Task<string> GenerateShortAnswerQuiz(string subject, string difficulty, int numberOfQuestions)
         {
             // Load the example and rules prompts
-            string examplePath = Path.Combine(_configuration["Prompts"], "ShortAnswerPrompt.txt");
-            string exampleDescription = await File.ReadAllTextAsync(examplePath);
+            string examplePath = Path.Combine(_configuration["Prompts"]!, "ShortAnswerPrompt.txt");
+            string exampleDescription = await File.ReadAllTextAsync(examplePath).ConfigureAwait(false);
 
-            string rulesPath = Path.Combine(_configuration["Prompts"], "RulesPrompt.txt");
-            string rulesDescription = await File.ReadAllTextAsync(rulesPath);
+            string rulesPath = Path.Combine(_configuration["Prompts"]!, "RulesPrompt.txt");
+            string rulesDescription = await File.ReadAllTextAsync(rulesPath).ConfigureAwait(false);
 
             // Construct the final prompt
             string finalPrompt = $"""
@@ -109,11 +109,11 @@ namespace EducationAPI.Plugins
         public async Task<string> GenerateLongAnswerQuiz(string subject, string difficulty, int numberOfQuestions)
         {
             // Load the example and rules prompts
-            string examplePath = Path.Combine(_configuration["Prompts"], "LongAnswerPrompt.txt");
-            string exampleDescription = await File.ReadAllTextAsync(examplePath);
+            string examplePath = Path.Combine(_configuration["Prompts"]!, "LongAnswerPrompt.txt");
+            string exampleDescription = await File.ReadAllTextAsync(examplePath).ConfigureAwait(false);
 
-            string rulesPath = Path.Combine(_configuration["Prompts"], "RulesPrompt.txt");
-            string rulesDescription = await File.ReadAllTextAsync(rulesPath);
+            string rulesPath = Path.Combine(_configuration["Prompts"]!, "RulesPrompt.txt");
+            string rulesDescription = await File.ReadAllTextAsync(rulesPath).ConfigureAwait(false);
 
             // Construct the final prompt
             string finalPrompt = $"""

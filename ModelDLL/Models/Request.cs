@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-namespace EducationWebApp.Models
+namespace ModelDLL.Models
 {
     // Remove unnecessary spaces - Completed
     // Add summary to the properties - Completed

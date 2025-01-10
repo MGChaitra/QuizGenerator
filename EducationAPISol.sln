@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EducationAPI", "EducationAP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EducationWebApp", "EducationWebApp\EducationWebApp.csproj", "{56AF6C6C-2180-40CD-80A7-F3BC2200FF2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelDLL", "ModelDLL\ModelDLL.csproj", "{46AD126F-E297-4B51-BEA1-BACB410E9206}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelDLL", "ModelDLL\ModelDLL.csproj", "{46AD126F-E297-4B51-BEA1-BACB410E9206}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{CEAE466C-8974-414A-8BFD-EF4BD72F8B04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +32,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{46AD126F-E297-4B51-BEA1-BACB410E9206} = {CEAE466C-8974-414A-8BFD-EF4BD72F8B04}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E72AAC11-5CD0-4245-8566-F6A651555599}

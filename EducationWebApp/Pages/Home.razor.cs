@@ -1,6 +1,6 @@
-using EducationWebApp.Models;
 using EducationWebApp.Services;
 using Microsoft.JSInterop;
+using ModelDLL.Models;
 using Org.BouncyCastle.Asn1.Ocsp;
 
 namespace EducationWebApp.Pages

@@ -1,4 +1,4 @@
-﻿using EducationWebApp.Models;
+﻿using ModelDLL.Models;
 
 namespace EducationWebApp.Contracts
 {

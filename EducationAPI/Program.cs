@@ -1,7 +1,10 @@
+using EducationAPI.Contracts;
 using EducationAPI.Plugins;
+using EducationAPI.Services;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.SemanticKernel;
+using Microsoft.SemanticKernel.ChatCompletion;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,16 +40,23 @@ builder.Services.AddSingleton(sp =>
   
     var kernelBuilder = Kernel.CreateBuilder();
     kernelBuilder.AddAzureOpenAIChatCompletion(
-        deploymentName: configuration["AzureOpenAI:DeploymentName"],
-        endpoint: configuration["AzureOpenAI:Endpoint"],
-        apiKey: configuration["AzureOpenAI:ApiKey"]);
+        deploymentName: configuration["AzureOpenAI:DeploymentName"]!,
+        endpoint: configuration["AzureOpenAI:Endpoint"]!,
+        apiKey: configuration["AzureOpenAI:ApiKey"]!);
   
     var quiz = new QuizPlugin(configuration);
     kernelBuilder.Plugins.AddFromObject(quiz, pluginName: "Quiz");
     return kernelBuilder.Build();
 });
+builder.Services.AddSingleton<IChatCompletionService>(sp =>
+{
+    var kernel=sp.GetRequiredService<Kernel>();
+    return kernel.GetRequiredService<IChatCompletionService>();
+});
 
 builder.Services.AddSingleton<IConfiguration>(configuration);
+builder.Services.AddSingleton<ChatHistory>();
+builder.Services.AddScoped<IQuizService, QuizService>();
 
 var app = builder.Build();
 
