@@ -2,11 +2,9 @@
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Microsoft.SemanticKernel;
-using Microsoft.SemanticKernel.ChatCompletion;
-using Microsoft.SemanticKernel.Connectors.OpenAI;
 using ModelDLL.Models;
-using System.IO;
+using System.Threading.Tasks;
+
 namespace EducationAPI.Controllers
 {
     [EnableCors("cors")]
@@ -14,19 +12,15 @@ namespace EducationAPI.Controllers
     [Route("api/quiz")]
     public class QuizController : Controller
     {
-        // Add summary to methods and properties - completed
-        // Add exception handling using try catch - completed
-        // Add Ilogger for logging - completed
-        // Create new folder Services - Not using any services here
-
         private readonly ILogger<QuizController> _logger;
-
         private readonly IQuizService _quizService;
+
         public QuizController(ILogger<QuizController> logger, IQuizService quizService)
         {
             _logger = logger;
             _quizService = quizService;
         }
+
         /// <summary>
         /// Generates a multiple-choice quiz.
         /// </summary>
@@ -45,8 +39,8 @@ namespace EducationAPI.Controllers
                 _logger.LogError(ex, "Error generating quiz content for type MCQ");
                 return BadRequest(ex);
             }
-
         }
+
         /// <summary>
         /// Generates a short-answer quiz.
         /// </summary>
@@ -66,6 +60,7 @@ namespace EducationAPI.Controllers
                 return BadRequest(ex);
             }
         }
+
         /// <summary>
         /// Generates a long-answer quiz.
         /// </summary>
@@ -83,7 +78,6 @@ namespace EducationAPI.Controllers
             {
                 _logger.LogError(ex, "Error generating quiz content for type Long Answer");
                 return BadRequest(ex);
-
             }
         }
     }
