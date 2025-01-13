@@ -14,6 +14,7 @@ namespace EducationAPI.Plugins
         public QuizPlugin(IConfiguration configuration)
         {
             _configuration = configuration;
+
         }
 
         /// <summary>
@@ -27,11 +28,25 @@ namespace EducationAPI.Plugins
         [Description("Generate MCQ quiz questions based on the subject, difficulty, and number of questions.")]
         public async Task<string> GenerateMCQQuiz(string subject, string difficulty, int numberOfQuestions)
         {
-            // Load the example and rules prompts
-            string examplePath = Path.Combine(_configuration["Prompts"]!, "MCQPrompt.txt");
-            string exampleDescription = await File.ReadAllTextAsync(examplePath).ConfigureAwait(false);
+            string? promptPath = _configuration["Prompts"];
 
-            string rulesPath = Path.Combine(_configuration["Prompts"]!, "RulesPrompt.txt");
+            if (string.IsNullOrWhiteSpace(promptPath))
+            {
+                throw new ArgumentNullException(nameof(promptPath));
+            }
+            // Load the example and rules prompts
+            string examplePath = Path.Combine(promptPath, "MCQPrompt.txt");
+            if (!File.Exists(examplePath))
+            {
+                throw new FileNotFoundException($"The example prompt file path is not found at path:{examplePath}");
+            }
+
+            string rulesPath = Path.Combine(promptPath, "RulesPrompt.txt");
+            if (!File.Exists(rulesPath))
+            {
+                throw new FileNotFoundException($"The rules prompt file path is not found at path:{rulesPath}");
+            }
+            string exampleDescription = await File.ReadAllTextAsync(examplePath).ConfigureAwait(false);
             string rulesDescription = await File.ReadAllTextAsync(rulesPath).ConfigureAwait(false);
 
             // Construct the final prompt
@@ -68,11 +83,26 @@ namespace EducationAPI.Plugins
         [Description("Generate short-answer quiz questions based on the subject, difficulty, and number of questions.")]
         public async Task<string> GenerateShortAnswerQuiz(string subject, string difficulty, int numberOfQuestions)
         {
-            // Load the example and rules prompts
-            string examplePath = Path.Combine(_configuration["Prompts"]!, "ShortAnswerPrompt.txt");
-            string exampleDescription = await File.ReadAllTextAsync(examplePath).ConfigureAwait(false);
+            string? promptPath = _configuration["Prompts"];
 
-            string rulesPath = Path.Combine(_configuration["Prompts"]!, "RulesPrompt.txt");
+            if (string.IsNullOrWhiteSpace(promptPath))
+            {
+                throw new ArgumentNullException(nameof(promptPath));
+            }
+            // Load the example and rules prompts
+            string examplePath = Path.Combine(promptPath, "ShortAnswerPrompt.txt");
+            if (!File.Exists(examplePath))
+            {
+                throw new FileNotFoundException($"The example prompt file path is not found at path:{examplePath}");
+            }
+
+            string rulesPath = Path.Combine(promptPath, "RulesPrompt.txt");
+            if (!File.Exists(rulesPath))
+            {
+                throw new FileNotFoundException($"The rules prompt file path is not found at path:{rulesPath}");
+            }
+
+            string exampleDescription = await File.ReadAllTextAsync(examplePath).ConfigureAwait(false);          
             string rulesDescription = await File.ReadAllTextAsync(rulesPath).ConfigureAwait(false);
 
             // Construct the final prompt
@@ -108,11 +138,27 @@ namespace EducationAPI.Plugins
         [Description("Generate long-answer quiz questions based on the subject, difficulty, and number of questions.")]
         public async Task<string> GenerateLongAnswerQuiz(string subject, string difficulty, int numberOfQuestions)
         {
-            // Load the example and rules prompts
-            string examplePath = Path.Combine(_configuration["Prompts"]!, "LongAnswerPrompt.txt");
-            string exampleDescription = await File.ReadAllTextAsync(examplePath).ConfigureAwait(false);
 
-            string rulesPath = Path.Combine(_configuration["Prompts"]!, "RulesPrompt.txt");
+            string? promptPath = _configuration["Prompts"];
+
+            if (string.IsNullOrWhiteSpace(promptPath))
+            {
+                throw new ArgumentNullException(nameof(promptPath));
+            }
+            // Load the example and rules prompts
+            string examplePath = Path.Combine(promptPath, "LongAnswerPrompt.txt");
+            if (!File.Exists(examplePath))
+            {
+                throw new FileNotFoundException($"The example prompt file path is not found at path:{examplePath}");
+            }
+
+            string rulesPath = Path.Combine(promptPath, "RulesPrompt.txt");
+            if (!File.Exists(rulesPath))
+            {
+                throw new FileNotFoundException($"The rules prompt file path is not found at path:{rulesPath}");
+            }
+
+            string exampleDescription = await File.ReadAllTextAsync(examplePath).ConfigureAwait(false);
             string rulesDescription = await File.ReadAllTextAsync(rulesPath).ConfigureAwait(false);
 
             // Construct the final prompt
