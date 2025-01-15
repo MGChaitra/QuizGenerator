@@ -31,6 +31,7 @@ namespace EducationAPI.Controllers
         {
             try
             {
+                ArgumentNullException.ThrowIfNull(request, nameof(request));
                 var result = await _quizService.GenerateQuizContentAsync(request, "MCQ").ConfigureAwait(false);
                 return Ok(result);
             }
@@ -51,6 +52,7 @@ namespace EducationAPI.Controllers
         {
             try
             {
+                ArgumentNullException.ThrowIfNull(request, nameof(request));
                 var result = await _quizService.GenerateQuizContentAsync(request, "Short Answer").ConfigureAwait(false);
                 return Ok(result);
             }
@@ -71,8 +73,10 @@ namespace EducationAPI.Controllers
         {
             try
             {
+                ArgumentNullException.ThrowIfNull(request, nameof(request));
                 var result = await _quizService.GenerateQuizContentAsync(request, "Long Answer").ConfigureAwait(false);
-                return Ok(result);
+                    return Ok(result);
+               
             }
             catch (Exception ex)
             {

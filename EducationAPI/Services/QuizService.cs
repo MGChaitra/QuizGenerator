@@ -33,8 +33,7 @@ namespace EducationAPI.Services
         /// <returns>An IActionResult containing the generated quiz content or an error status.</returns>
         public async Task<string> GenerateQuizContentAsync(RequestModel request, string questionType)
         {
-            try
-            {
+            
                 _history.AddUserMessage(request.Subject);
                 _history.AddUserMessage(request.Difficulty);
                 _history.AddUserMessage(request.Number.ToString());
@@ -51,11 +50,7 @@ namespace EducationAPI.Services
                     kernel: _kernel);
 
                 return result.Content!;
-            }
-            catch
-            {
-                throw;
-            }
+          
         }
     }
 }

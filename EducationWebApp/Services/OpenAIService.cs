@@ -40,7 +40,7 @@ namespace EducationWebApp.Services
         /// <returns>The generated MCQ quiz content.</returns>
         public async Task<string> GetMCQQuizContentAsync(RequestModel request)
         {
-            ValidateParameters(request);
+            ArgumentNullException.ThrowIfNull(request, nameof(request));
 
             try
             {
@@ -65,7 +65,7 @@ namespace EducationWebApp.Services
         /// <returns>The generated short-answer quiz content.</returns>
         public async Task<string> GetShortAnswerQuizContentAsync(RequestModel request)
         {
-            ValidateParameters(request);
+            ArgumentNullException.ThrowIfNull(request, nameof(request));
 
             try
             {
@@ -87,7 +87,7 @@ namespace EducationWebApp.Services
         /// <returns>The generated long-answer quiz content.</returns>
         public async Task<string> GetLongAnswerQuizContentAsync(RequestModel request)
         {
-            ValidateParameters(request);
+            ArgumentNullException.ThrowIfNull(request, nameof(request));
 
             try
             {
@@ -102,16 +102,6 @@ namespace EducationWebApp.Services
             }
         }
 
-        /// <summary>
-        /// Validates the request parameters.
-        /// </summary>
-        /// <param name="request">The request containing quiz parameters.</param>
-        private void ValidateParameters(RequestModel request)
-        {
-
-            if (request is null)
-                throw new ArgumentNullException(nameof(request), "Request cannot be null");
-           
-        }
+    
     }
 }
